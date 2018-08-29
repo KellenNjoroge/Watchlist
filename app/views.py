@@ -1,4 +1,4 @@
-from flask import render_template, request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for
 from app import app
 from .request import get_movies, get_movie, search_movie
 
@@ -13,6 +13,7 @@ def index():
     popular_movies = get_movies('popular')
     upcoming_movie = get_movies('upcoming')
     now_showing_movie = get_movies('now_playing')
+
     title = 'Home - Welcome to The best Movie Review Website Online'
 
     search_movie = request.args.get('movie_query')
@@ -39,7 +40,7 @@ def search(movie_name):
     """
     View function to display the search results
     """
-    movie_name_list = movie_name.split("")
+    movie_name_list = movie_name.split(" ")
     movie_name_format = "+".join(movie_name_list)
     searched_movies = search_movie(movie_name_format)
     title = f'search results for {movie_name}'
