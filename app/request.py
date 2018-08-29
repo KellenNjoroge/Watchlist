@@ -75,3 +75,4 @@ def get_movie(id):
             movie_object = Movie(id, title, overview, poster, vote_average, vote_count)
 
     return movie_object
+
