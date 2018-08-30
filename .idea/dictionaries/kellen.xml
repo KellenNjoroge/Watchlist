@@ -2,6 +2,9 @@
   <dictionary name="kellen">
     <words>
       <w>endblock</w>
+      <w>endfor</w>
+      <w>endmacro</w>
+      <w>navbar</w>
       <w>whooops</w>
     </words>
   </dictionary>

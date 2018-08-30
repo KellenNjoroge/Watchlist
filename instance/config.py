@@ -1,1 +1,3 @@
 MOVIE_API_KEY = '520b494336ad9eaa72a5e5eca0b971e4'
+SECRET_KEY = 'mutegi'
+

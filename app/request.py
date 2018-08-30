@@ -3,6 +3,7 @@ import urllib.request
 from app import app
 from .models import movie
 
+
 Movie = movie.Movie
 
 # Getting api key
