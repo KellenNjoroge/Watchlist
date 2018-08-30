@@ -5,7 +5,6 @@ from ..models import Review
 from .forms import ReviewForm
 
 
-
 # Views
 @main.route('/')
 def index():
@@ -22,10 +21,15 @@ def index():
     search_movie = request.args.get('movie_query')
 
     if search_movie:
-        return redirect(url_for('search', movie_name=search_movie))
+        return redirect(url_for('main.results'))
     else:
         return render_template('index.html', title=title, popular=popular_movies, upcoming=upcoming_movie,
                                now_showing=now_showing_movie)
+
+
+@main.route('/results')
+def results():
+    return render_template('search', movie_name=search_movie)
 
 
 @main.route('/movie/<int:id>')
@@ -37,7 +41,7 @@ def movie(id):
     title = f'{movie.title}'
     reviews = Review.get_reviews(movie.id)
 
-    return render_template('movie.html', title=title, movie=movie, reviews = reviews)
+    return render_template('movie.html', title=title, movie=movie, reviews=reviews)
 
 
 @main.route('/search/<movie_name>')
@@ -68,3 +72,4 @@ def new_review(id):
 
     title = f'{movie.title} review'
     return render_template('new_review.html', title=title, review_form=form, movie=movie)
+
