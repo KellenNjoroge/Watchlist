@@ -1,8 +1,9 @@
 from flask import request, render_template, redirect, url_for
 from . import main
 from ..request import get_movies, get_movie, search_movie
-from ..models import Review
 from .forms import ReviewForm
+from ..models import Review
+
 
 
 # Views
@@ -21,15 +22,15 @@ def index():
     search_movie = request.args.get('movie_query')
 
     if search_movie:
-        return redirect(url_for('main.results'))
+        return redirect(url_for('.search', movie_name=search_movie))
     else:
         return render_template('index.html', title=title, popular=popular_movies, upcoming=upcoming_movie,
                                now_showing=now_showing_movie)
 
 
-@main.route('/results')
-def results():
-    return render_template('search', movie_name=search_movie)
+# @main.route('/results')
+# def results():
+#     return render_template('search', movie_name=search_movie)
 
 
 @main.route('/movie/<int:id>')
